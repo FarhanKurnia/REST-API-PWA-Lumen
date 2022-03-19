@@ -94,8 +94,7 @@ class DestinasiController extends Controller
         return response()->json([
             'status' => $status,
             'message' => $message,
-            'data' => $destinasi
-        ], 200);
+            'data' => $destinasi::with('review')->where('id',$id)->get()], 200);
     }
 
     /**

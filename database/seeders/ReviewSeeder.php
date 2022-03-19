@@ -19,6 +19,7 @@ class ReviewSeeder extends Seeder
     {
         DB::table('reviews')->insert([
             'user_id' => '1',
+            'destinasi_id'=>'1',
         	'review' => 'bagus keren',
         	'rating' => '5',
             'created_at' => Carbon::now(),
@@ -26,6 +27,7 @@ class ReviewSeeder extends Seeder
         ],
         [
             'user_id' => '1',
+            'destinasi_id'=>'1',
         	'review' => 'bersih',
         	'rating' => '4',
             'created_at' => Carbon::now(),

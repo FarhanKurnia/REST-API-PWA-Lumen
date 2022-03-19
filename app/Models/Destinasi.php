@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+//namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Destinasi extends Model
@@ -9,11 +9,10 @@ class Destinasi extends Model
     //
     protected $table = 'destinasis';
     protected $primaryKey = 'id';
-    protected $fillable = [
-        'nama_destinasi','lokasi','deskripsi',
+    protected $fillable = ['nama_destinasi','lokasi','deskripsi',
     ];
-    public function reviews()
+    public function review()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany(Review::class);
     }
 }

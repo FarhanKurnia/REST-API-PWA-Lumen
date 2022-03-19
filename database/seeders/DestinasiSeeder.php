@@ -21,7 +21,6 @@ class DestinasiSeeder extends Seeder
             'nama_destinasi' => 'Taman sari',
         	'lokasi' => 'Jl nga tau nga apal',
         	'deskripsi' => 'ayo kita ke tamansari',
-            'review_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ],
@@ -29,7 +28,6 @@ class DestinasiSeeder extends Seeder
             'nama_destinasi' => 'Tugu Yogyakarta',
         	'lokasi' => 'Jl deket malioboro',
         	'deskripsi' => 'ayo kita ke tamansari',
-            'review_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
