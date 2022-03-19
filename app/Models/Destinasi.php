@@ -12,8 +12,8 @@ class Destinasi extends Model
     protected $fillable = [
         'nama_destinasi','lokasi','deskripsi',
     ];
-    /**public function reviews()
+    public function reviews()
     {
-        return $this->hasMany(Reviews::class);
-    }*/
+        return $this->hasMany('App\Review');
+    }
 }
