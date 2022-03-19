@@ -7,33 +7,38 @@
 
 This REST-API backend was built using Lumen Framework for suggestion tourist destination application. 
 
-## Design Database
+## Endpoints
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Destination
+get:http://localhost:8000/api/Destinasi
+get:http://localhost:8000/api/Destinasi/{id}
 
-## How to Use
+
+User
+
+
+## Implementations
 1. Create MySQL database
 
-2. Clone Repository with:
+2. Clone Repository with</br>
     ``$ git clone https://github.com/FarhanKurnia/REST-API-PWA-Lumen.git``
 
-3. Install Dependency 
+3. Install Dependency </br>
     ``$ composer install``
 
-4. Set up environment
+4. Set up environment</br>
     ``$ cp .env.example .env``
 
 5. and customize environment (.env) files with DB name that has been created.
 
-6. Migrate and seed table:
+6. Migrate and seed table:</br>
     ``$  php artisan migrate --seed``
-    
-7. Run local server
+
+7. Run local server</br>
     ``$ php -S localhost:8000 -t public``
 
 
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## Security Vulnerabilities
 
@@ -41,4 +46,3 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 
 ## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
