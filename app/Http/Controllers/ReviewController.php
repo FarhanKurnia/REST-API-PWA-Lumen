@@ -1,12 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Review;
+namespace App\Http\Middleware;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Destinasi;
+use App\Models\Review;
 
 class ReviewController extends Controller
 {
+    public function __construct()
+    {
+        // ini untuk token auth header
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,11 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Load data post successfully',
+            'data' => Review::all()
+        ], 200);
     }
 
     /**
@@ -35,7 +47,28 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = 'Review created successfully';
+        $status = "success";
+
+        $user_id = $request->input('user_id');
+        $review = $request->input('review');
+        $rating = $request->input('rating');
+  
+        try {
+            Review::create([
+                'user_id' => $user_id,
+                'review' => $review,
+                'rating' => $rating,
+            ]);
+        } catch (\Throwable $th) {
+            $status = "error";
+            $message = $th->getMessage();
+        }
+
+        return response([
+            'status' => $status,
+            'message' => $message,
+        ], 200);
     }
 
     /**
@@ -44,9 +77,22 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show($id)
     {
-        //
+        $message = "Load data post successfully";
+        $status = "success";
+        $review = Review::find($id);
+
+        if (!$review) {
+            $status = "error";
+            $message = "Data review not found";
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'data' => $review
+        ], 200);
     }
 
     /**
@@ -69,7 +115,24 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+
+        $message = 'Review updated successfully';
+        $status = "success";
+        try {
+            Review::find($id)->update([
+                'user_id' => $request->user_id,
+                'review' => $request->review,
+                'rating' => $request->rating,
+            ]);
+        } catch (\Throwable $th) {
+            $status = "error";
+            $message = $th->getMessage();
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ], 200);
     }
 
     /**
@@ -78,8 +141,20 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        //
+        $message = 'Review deleted successfully';
+        $status = "success";
+        try {
+            Review::find($id)->delete();
+        } catch (\Throwable $th) {
+            $status = "error";
+            $message = $th->getMessage();
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ], 200);
     }
 }
