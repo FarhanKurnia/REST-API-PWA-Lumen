@@ -1,4 +1,4 @@
-# REST API with Lumen PHP Framework
+# REST API with Lumen PHP Framework Documentation
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
@@ -6,32 +6,57 @@
 [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 
 This REST-API backend was built using Lumen Framework for suggestion tourist destination application. 
+Feature:
+- Register User
+- Login User
+- CRUD Destinasi
+- CRUD Review
 
+Relation:
+- Users and Reviews (One to Many) 
+- Destinasi and Reviews (One to Many) 
+
+HTTP Header:
+- token
+------------------------------------------------------------------------
 ## Endpoints
-
 Destination
-get:http://localhost:8000/api/Destinasi
-get:http://localhost:8000/api/Destinasi/{id}
-
-
+</br>`GET:http://localhost:8000/api/Destinasi`
+</br>`POST:http://localhost:8000/api/Destinasi`
+</br>`PUT:http://localhost:8000/api/Destinasi/{id}`
+</br>`GET:http://localhost:8000/api/Destinasi/{id}`
+</br>`DELETE:http://localhost:8000/api/Destinasi/{id}`
+</br>
+</br>
+Reviews
+</br>`GET:http://localhost:8000/api/Review`
+</br>`POST:http://localhost:8000/api/Review`
+</br>`PUT:http://localhost:8000/api/Review`
+</br>`GET:http://localhost:8000/api/Review`
+</br>`DELETE:http://localhost:8000/api/Review`
+</br>
+</br>
 User
+</br>`POST:http://localhost:8000/api/register`
+</br>`POST:http://localhost:8000/api/login`
+</br>`POST:http://localhost:8000/api/user/{id}`
 
-
+------------------------------------------------------------------------
 ## Implementations
 1. Create MySQL database
 
-2. Clone Repository with</br>
+2. Clone Repository </br>
     ``$ git clone https://github.com/FarhanKurnia/REST-API-PWA-Lumen.git``
 
 3. Install Dependency </br>
     ``$ composer install``
 
-4. Set up environment</br>
+4. Copy and Set up environment</br>
     ``$ cp .env.example .env``
 
-5. and customize environment (.env) files with DB name that has been created.
+5. Customize environment (.env) files with DB name that has been created.
 
-6. Migrate and seed table:</br>
+6. Migrate and seed table</br>
     ``$  php artisan migrate --seed``
 
 7. Run local server</br>
@@ -39,10 +64,4 @@ User
 
 
 
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
+------------------------------------------------------------------------
