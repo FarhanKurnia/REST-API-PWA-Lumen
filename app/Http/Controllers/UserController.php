@@ -63,4 +63,22 @@ class UserController extends Controller
             'data' => Post::all()
         ], 200);
     }
+
+    public function show($id)
+    {
+        //
+        $message = "Load data post successfully";
+        $status = "success";
+        $user = User::find($id);
+
+        if (!$user) {
+            $status = "error";
+            $message = "Data post not found";
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+            'data' => $user::with('review.destinasi')->where('id',$id)->get()], 200);
+    }
 } 

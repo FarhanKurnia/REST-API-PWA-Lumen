@@ -91,6 +91,7 @@ $router->delete('/api/Destinasi/{id}','DestinasiController@destroy');
 $router->get('/api/Destinasi/{id}','DestinasiController@show');
 $router->get('/api/Destinasi','DestinasiController@index');
 $router->get('/api/User','ExampleController@index');
+$router->get('/api/User/{id}','UserController@show');
 
 $router->post('/api/Review','ReviewController@store');
 $router->put('/api/Review/{id}','ReviewController@update');
