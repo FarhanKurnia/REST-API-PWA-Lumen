@@ -23,6 +23,7 @@ class Authenticate
     public function __construct(Auth $auth)
     {
         $this->auth = $auth;
+        #$this->middleware('auth');
     }
 
     /**

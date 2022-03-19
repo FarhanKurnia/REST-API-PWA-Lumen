@@ -2,7 +2,9 @@
 namespace App\Http\Middleware;
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class ExampleController extends Controller
 {
@@ -16,7 +18,7 @@ class ExampleController extends Controller
         $this->middleware('auth');
     }
 
-    public function generateKey()
+    /**public function generateKey()
     {
         return Str::random(32);
     }
@@ -29,5 +31,15 @@ class ExampleController extends Controller
     public function getProfile()
     {
         return "profile";
+    }*/
+
+    public function index()
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Load data post successfully',
+            'data' => User::all()
+        ], 200);
     }
+
 }

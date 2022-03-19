@@ -54,4 +54,13 @@ class UserController extends Controller
 
       return response()->json($user);
   }
+
+  public function index()
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Load data post successfully',
+            'data' => Post::all()
+        ], 200);
+    }
 } 
