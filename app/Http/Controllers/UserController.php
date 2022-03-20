@@ -81,4 +81,24 @@ class UserController extends Controller
             'message' => $message,
             'data' => $user::with('review.destinasi')->where('id',$id)->get()], 200);
     }
+
+    public function update(Request $request, $id)
+    {
+
+        $message = 'User updated successfully';
+        $status = "success";
+        try {
+            User::find($id)->update([
+                'name' => $request->name,
+            ]);
+        } catch (\Throwable $th) {
+            $status = "error";
+            $message = $th->getMessage();
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ], 200);
+    }
 } 

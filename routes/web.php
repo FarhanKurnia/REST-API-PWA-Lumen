@@ -84,14 +84,17 @@ $router->get('/profile',['as'=>'profile','uses'=>'ExampleController@getProfile']
 #Endpoint
 $router->post('/api/register','UserController@register');
 $router->post('/api/login','UserController@login');
+$router->get('/api/User','ExampleController@index');
+$router->get('/api/User/{id}','UserController@show');
+$router->put('/api/User/{id}','UserController@update');
 
 $router->post('/api/Destinasi','DestinasiController@store');
 $router->put('/api/Destinasi/{id}','DestinasiController@update');
 $router->delete('/api/Destinasi/{id}','DestinasiController@destroy');
 $router->get('/api/Destinasi/{id}','DestinasiController@show');
 $router->get('/api/Destinasi','DestinasiController@index');
-$router->get('/api/User','ExampleController@index');
-$router->get('/api/User/{id}','UserController@show');
+
+
 
 $router->post('/api/Review','ReviewController@store');
 $router->put('/api/Review/{id}','ReviewController@update');
