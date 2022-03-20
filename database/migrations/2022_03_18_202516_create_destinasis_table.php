@@ -18,7 +18,7 @@ class CreateDestinasisTable extends Migration
             $table->string('nama_destinasi');
             $table->string('lokasi');
             $table->string('deskripsi');
-            //$table->integer('review_id')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

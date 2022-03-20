@@ -9,7 +9,7 @@ class Destinasi extends Model
     //
     protected $table = 'destinasis';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_destinasi','lokasi','deskripsi',
+    protected $fillable = ['nama_destinasi','lokasi','deskripsi','image_url',
     ];
     public function review()
     {
