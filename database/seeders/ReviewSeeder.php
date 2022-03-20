@@ -17,7 +17,7 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('reviews')->insert([
+        DB::table('reviews')->insert([[
             'user_id' => '1',
             'destinasi_id'=>'1',
         	'review' => 'Tempat wisata yang seru untuk bahan edukasi tapi juga bagus untuk foto foto karena banyak spot yang unik',
@@ -48,7 +48,7 @@ class ReviewSeeder extends Seeder
         	'rating' => '4',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+        ]]);
 
     }
 }

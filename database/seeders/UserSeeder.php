@@ -16,22 +16,22 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('users')->insert([[
             'name'=> 'farhan',
-            'email'=> 'farhan1@gmail.com',
+            'email'=> 'farhan4@gmail.com',
             'password'=>'rahasia',
             'token'=> "",
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ],
         [
             'name'=> 'kurnia',
-            'email'=> 'farhan2@gmail.com',
+            'email'=> 'farhan5@gmail.com',
             'password'=>'rahasia',
             'token'=> "",
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+            'updated_at' => Carbon::now(),
+        ]]);
         
     }
 }

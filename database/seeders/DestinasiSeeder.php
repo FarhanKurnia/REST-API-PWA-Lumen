@@ -17,7 +17,7 @@ class DestinasiSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('destinasis')->insert([
+        DB::table('destinasis')->insert([[
             'nama_destinasi' => 'Taman Sari',
         	'lokasi' => 'Patehan, Kecamatan Kraton, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55133',
         	'deskripsi' => 'Bekas taman kerajaan dari abad ke-18 dengan kompleks pemandian bertingkat dan arsitektur yang indah.',
@@ -64,6 +64,6 @@ class DestinasiSeeder extends Seeder
             'image_url' => 'https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/1-Goa-Jomblang.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+        ]]);
     }
 }
