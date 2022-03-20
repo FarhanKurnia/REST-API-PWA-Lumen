@@ -25,8 +25,7 @@ class ReviewController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Load data post successfully',
-            'data' => Review::all()
-        ], 200);
+            'data' => Review::all()], 200);
     }
 
     /**
@@ -93,8 +92,7 @@ class ReviewController extends Controller
         return response()->json([
             'status' => $status,
             'message' => $message,
-            'data' => $review
-        ], 200);
+            'data' => $review::with('user')->where('id',$id)->get()], 200);
     }
 
     /**
@@ -115,7 +113,7 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, $id)
     {
 
         $message = 'Review updated successfully';
