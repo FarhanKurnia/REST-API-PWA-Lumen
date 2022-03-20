@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([[
             'name'=> 'farhan',
-            'email'=> 'farhan4@gmail.com',
+            'email'=> 'user1@gmail.com',
             'password'=>'rahasia',
             'token'=> "",
             'created_at' => Carbon::now(),
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         ],
         [
             'name'=> 'kurnia',
-            'email'=> 'farhan5@gmail.com',
+            'email'=> 'user2@gmail.com',
             'password'=>'rahasia',
             'token'=> "",
             'created_at' => Carbon::now(),
