@@ -87,6 +87,7 @@ $router->post('/api/login','UserController@login');
 $router->get('/api/User','ExampleController@index');
 $router->get('/api/User/{id}','UserController@show');
 $router->put('/api/User/{id}','UserController@update');
+$router->put('/api/logout/{id}','UserController@logout');
 
 $router->post('/api/Destinasi','DestinasiController@store');
 $router->put('/api/Destinasi/{id}','DestinasiController@update');

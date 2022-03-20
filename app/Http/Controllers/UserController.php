@@ -101,4 +101,23 @@ class UserController extends Controller
             'message' => $message,
         ], 200);
     }
+
+    public function logout(Request $request, $id)
+    {
+        $message = 'User updated successfully';
+        $status = "success";
+        try {
+            User::find($id)->update([
+                'token' => $request->token,
+            ]);
+        } catch (\Throwable $th) {
+            $status = "error";
+            $message = $th->getMessage();
+        }
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ], 200);
+    }
 } 
