@@ -62,7 +62,7 @@ User
     cp .env.example .env
     ```
 
-5. Customize environment (.env) files with DB name that has been created.
+5. Customize environment (.env) files with DB name that has been created.</br>
 
 6. Migrate and seed table</br>
     ```
