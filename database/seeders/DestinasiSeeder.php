@@ -51,6 +51,13 @@ class DestinasiSeeder extends Seeder
         	'deskripsi' => 'Tujuan wisata alam yang menawarkan keindahan gunung dan kegiatan outdoor.',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
+        ],
+        [
+            'nama_destinasi' => 'Goa Jomblang',
+        	'lokasi' => 'Jetis, Pacarejo, Kec. Semanu, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55893',
+        	'deskripsi' => 'Gua pembuangan vertikal berbatu yang bisa dieksplorasi menggunakan peralatan caving yang disediakan di lokasi',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }
