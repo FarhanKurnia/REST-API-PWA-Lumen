@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
 namespace App\Http\Middleware;
+namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -51,12 +51,14 @@ class ReviewController extends Controller
         $status = "success";
 
         $user_id = $request->input('user_id');
+        $destinasi_id = $request->input('destinasi_id');
         $review = $request->input('review');
         $rating = $request->input('rating');
   
         try {
             Review::create([
                 'user_id' => $user_id,
+                'destinasi_id' => $destinasi_id,
                 'review' => $review,
                 'rating' => $rating,
             ]);

@@ -9,7 +9,7 @@ class Review extends Model
     protected $table = 'reviews';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user_id','review','rating',
+        'user_id','destinasi_id','review','rating',
     ];
 
     public function destinasi(){
