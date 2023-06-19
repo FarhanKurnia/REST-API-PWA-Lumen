@@ -45,8 +45,7 @@ class DestinasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $this->validate($request, [
             'nama_destinasi' => 'required',
             'lokasi' => 'required',
@@ -120,24 +119,33 @@ class DestinasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $message = 'Post updated successfully';
-        $status = "success";
-        try {
+        $this->validate($request, [
+            'nama_destinasi' => 'required',
+            'lokasi' => 'required',
+            'deskripsi' => 'required'
+        ]);
+        $nama_destinasi = $request->input('nama_destinasi');
+        $lokasi = $request->input('lokasi');
+        $deskripsi = $request->input('deskripsi');
+        $destinasi = Destinasi::where('nama_destinasi',$nama_destinasi)->first();
+        if(!$destinasi){
             Destinasi::find($id)->update([
                 'nama_destinasi' => $request->nama_destinasi,
-                'lokasi' => $request->lokasi,
-                'deskripsi' => $request->deskripsi,
+                'lokasi' => $lokasi,
+                'deskripsi' => $deskripsi,
             ]);
-        } catch (\Throwable $th) {
-            $status = "error";
-            $message = $th->getMessage();
+            $message = 'Destination updated successfully';
+            $status = 'success';
+            $http_code = 200;
+        }else{
+            $message = 'Destination already created';
+            $status = 'error';
+            $http_code = 400;
         }
-
-        return response()->json([
+        return response([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 
     /**
@@ -149,17 +157,18 @@ class DestinasiController extends Controller
     public function destroy($id)
     {
         $message = 'Destination deleted successfully';
-        $status = "success";
+        $status = 'success';
+        $http_code = 200;
         try {
             Destinasi::find($id)->delete();
         } catch (\Throwable $th) {
-            $status = "error";
+            $status = 'error';
             $message = $th->getMessage();
+            $http_code = 400;
         }
-
         return response()->json([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 }
