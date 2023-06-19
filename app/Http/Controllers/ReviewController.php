@@ -85,14 +85,21 @@ class ReviewController extends Controller
         $review = Review::find($id);
 
         if (!$review) {
-            $status = "error";
-            $message = "Data review not found";
+            $status = 'error';
+            $message = 'Review not found';
+            $data = null;
+            $http_code = 400;
+        }else{
+            $status = 'error';
+            $message = 'Load data review successfully';
+            $review = $review->where('id',$id);
+            $data = $review->with('user:id,name,email')->get();
+            $http_code = 200;
         }
-
         return response()->json([
             'status' => $status,
             'message' => $message,
-            'data' => $review::with('user')->where('id',$id)->get()], 200);
+            'data' => $data], $http_code);
     }
 
     /**

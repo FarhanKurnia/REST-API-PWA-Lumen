@@ -62,7 +62,7 @@ class DestinasiController extends Controller
             $data = null;
             $http_code = 400;
         } else{
-            $message = 'Load data post successfully';
+            $message = 'Load data destination successfully';
             $status = 'success';
             $data = $destinasi::with('review.user')->where('id',$id)->get();
             $http_code = 200;
