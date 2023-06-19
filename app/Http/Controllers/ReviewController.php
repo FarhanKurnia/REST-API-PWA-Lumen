@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Destinasi;
 use App\Models\Review;
+use App\Models\User;
 
 class ReviewController extends Controller
 {
@@ -46,14 +47,18 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $message = 'Review created successfully';
-        $status = "success";
-
-        $user_id = $request->input('user_id');
+        $this->validate($request, [
+            'destinasi_id' => 'required',
+            'review' => 'required',
+            'rating' => 'required'
+        ]);
+        $header = getallheaders();
+        $token = $header['token'];
+        $user_id = User::where('token',$token)->pluck('id');
+        $user_id = $user_id[0];
         $destinasi_id = $request->input('destinasi_id');
         $review = $request->input('review');
         $rating = $request->input('rating');
-  
         try {
             Review::create([
                 'user_id' => $user_id,
@@ -61,15 +66,18 @@ class ReviewController extends Controller
                 'review' => $review,
                 'rating' => $rating,
             ]);
+            $status = 'success';
+            $message = 'Review created successfully';
+            $http_code = 200;
         } catch (\Throwable $th) {
-            $status = "error";
+            $status = 'error';
             $message = $th->getMessage();
+            $http_code = 400;
         }
-
         return response([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 
     /**
