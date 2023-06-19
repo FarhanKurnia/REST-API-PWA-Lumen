@@ -75,8 +75,7 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function profile()
-    {
+    public function profile(){
         $header = getallheaders();
         $token = $header['token'];
         $user = User::where('token',$token)->first();
@@ -95,24 +94,32 @@ class UserController extends Controller
             'data' => $data], 200);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-
-        $message = 'User updated successfully';
-        $status = "success";
-        try {
-            User::find($id)->update([
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $header = getallheaders();
+        $token = $header['token'];
+        $user = User::where('token',$token)->first();
+        if(!$user){
+            $status = 'error';
+            $message = 'User not found';
+            $http_code = 401;
+        }
+        else{
+            $user->update([
                 'name' => $request->name,
             ]);
-        } catch (\Throwable $th) {
-            $status = "error";
-            $message = $th->getMessage();
+            $status = 'success';
+            $message = 'User updated successfully';
+            $http_code = 200;
         }
-
+            
         return response()->json([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 
     public function logout()

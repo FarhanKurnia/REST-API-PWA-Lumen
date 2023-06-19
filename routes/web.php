@@ -24,9 +24,9 @@ $router->get('/', function () use ($router) {
 #Endpoint USER
 $router->post('/api/register','UserController@register');
 $router->post('/api/login','UserController@login');
-$router->get('/api/User','ExampleController@index');
+$router->get('/api/user','ExampleController@index');
 $router->get('/api/profile','UserController@profile');
-$router->put('/api/User/{id}','UserController@update');
+$router->put('/api/user','UserController@update');
 $router->get('/api/logout','UserController@logout');
 
 #Endpoint DESTINASI
