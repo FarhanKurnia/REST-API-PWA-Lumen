@@ -49,19 +49,20 @@ class UserController extends Controller
       if (!$user) {
           return response()->json([
             'status' => 'error',
-            'message' => 'Login failed'], 404);
+            'message' => 'User not found'], 404);
       }
 
       $isValidPassword = Hash::check($password, $user->password);
       if (!$isValidPassword) {
-        return response()->json(['message' => 'Login failed'], 401);
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Password and email do not match'
+        ], 404);
       }
-
       $generateToken = bin2hex(random_bytes(40));
       $user->update([
           'token' => $generateToken
       ]);
-
       return response()->json($user);
   }
 
