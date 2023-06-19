@@ -21,8 +21,7 @@ class DestinasiController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
+    public function index(){
         return response()->json([
             'status' => 'success',
             'message' => 'Load data destinations successfully',
@@ -48,29 +47,33 @@ class DestinasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $message = 'Destination created successfully';
-        $status = "success";
-
+        $this->validate($request, [
+            'nama_destinasi' => 'required',
+            'lokasi' => 'required',
+            'deskripsi' => 'required'
+        ]);
         $nama_destinasi = $request->input('nama_destinasi');
         $lokasi = $request->input('lokasi');
         $deskripsi = $request->input('deskripsi');
-  
-        try {
+        $destinasi = Destinasi::where('nama_destinasi',$nama_destinasi)->first();
+        if(!$destinasi){
             Destinasi::create([
                 'nama_destinasi' => $nama_destinasi,
                 'lokasi' => $lokasi,
                 'deskripsi' => $deskripsi,
             ]);
-        } catch (\Throwable $th) {
-            $status = "error";
-            $message = $th->getMessage();
+            $message = 'Destination created successfully';
+            $status = 'success';
+            $http_code = 201;
+        }else{
+            $message = 'Destination already created';
+            $status = 'error';
+            $http_code = 400;
         }
-
         return response([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 
     /**
