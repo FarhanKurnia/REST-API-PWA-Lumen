@@ -115,22 +115,22 @@ class UserController extends Controller
 
     public function logout()
     {
-        $message = 'User updated successfully';
-        $status = "success";
         $header = getallheaders();
         $token = $header['token'];
-        try{
-            User::where('token',$token)->update([
+        $user = User::where('token', $token)->first();
+        if(!$user){
+            return response()->json([    
+                'status' => 'error',
+                'message' => 'User already logged out'
+            ], 401);
+        }else{
+            $user->update([
                 'token' => null
              ]);
-        } catch (\Throwable $th) {
-            $status = "error";
-            $message = $th->getMessage();
+             return response()->json([
+                'status' => 'success',
+                'message' => 'User log out successfully',
+            ], 200);
         }
-        
-        return response()->json([
-            'status' => $status,
-            'message' => $message,
-        ], 200);
     }
 } 
