@@ -30,15 +30,15 @@ $router->put('/api/user','UserController@update');
 $router->get('/api/logout','UserController@logout');
 
 #Endpoint DESTINASI
-$router->post('/api/Destinasi','DestinasiController@store');
-$router->put('/api/Destinasi/{id}','DestinasiController@update');
-$router->delete('/api/Destinasi/{id}','DestinasiController@destroy');
-$router->get('/api/Destinasi/{id}','DestinasiController@show');
-$router->get('/api/Destinasi','DestinasiController@index');
+$router->post('/api/destinasi','DestinasiController@store');
+$router->put('/api/destinasi/{id}','DestinasiController@update');
+$router->delete('/api/destinasi/{id}','DestinasiController@destroy');
+$router->get('/api/destinasi/{id}','DestinasiController@show');
+$router->get('/api/destinasi','DestinasiController@index');
 
 #Endpoint REVIEW
-$router->post('/api/Review','ReviewController@store');
-$router->put('/api/Review/{id}','ReviewController@update');
-$router->delete('/api/Review/{id}','ReviewController@destroy');
-$router->get('/api/Review/{id}','ReviewController@show');
-$router->get('/api/Review','ReviewController@index');
+$router->post('/api/review','ReviewController@store');
+$router->put('/api/review/{id}','ReviewController@update');
+$router->delete('/api/review/{id}','ReviewController@destroy');
+$router->get('/api/review/{id}','ReviewController@show');
+$router->get('/api/review','ReviewController@index');
