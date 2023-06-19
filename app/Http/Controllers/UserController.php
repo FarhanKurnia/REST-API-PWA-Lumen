@@ -18,7 +18,7 @@ class UserController extends Controller
       $email = $request->input('email');
       $password = Hash::make($request->input('password'));
       $check_email = User::where('email',$email)->first();
-      if($check_email == NULL){
+      if(!$check_email){
         User::create([
             'name' => $name,
             'email' => $email,
@@ -47,7 +47,9 @@ class UserController extends Controller
 
       $user = User::where('email', $email)->first();
       if (!$user) {
-          return response()->json(['message' => 'Login failed'], 401);
+          return response()->json([
+            'status' => 'error',
+            'message' => 'Login failed'], 404);
       }
 
       $isValidPassword = Hash::check($password, $user->password);
