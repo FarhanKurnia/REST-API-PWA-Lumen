@@ -80,10 +80,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $message = "Load data post successfully";
-        $status = "success";
         $review = Review::find($id);
-
         if (!$review) {
             $status = 'error';
             $message = 'Review not found';
