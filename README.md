@@ -19,28 +19,8 @@ Relation:
 HTTP Header:
 - token
 ------------------------------------------------------------------------
-## Endpoints
-Destination
-</br>`GET:http://localhost:8000/api/Destinasi`
-</br>`POST:http://localhost:8000/api/Destinasi`
-</br>`PUT:http://localhost:8000/api/Destinasi/{id}`
-</br>`GET:http://localhost:8000/api/Destinasi/{id}`
-</br>`DELETE:http://localhost:8000/api/Destinasi/{id}`
-</br>
-</br>
-Reviews
-</br>`GET:http://localhost:8000/api/Review`
-</br>`POST:http://localhost:8000/api/Review`
-</br>`PUT:http://localhost:8000/api/Review/{id}`
-</br>`GET:http://localhost:8000/api/Review/{id}`
-</br>`DELETE:http://localhost:8000/api/Review/{id}`
-</br>
-</br>
-User
-</br>`POST:http://localhost:8000/api/register`
-</br>`POST:http://localhost:8000/api/login`
-</br>`GET:http://localhost:8000/api/user/{id}`
-</br>`PUT:http://localhost:8000/api/user/{id}`
+## Documentation API
+API documentation can be accessed via https://docuenter.getpostman.com/view/20083017/2s93sjVUjb
 
 
 ------------------------------------------------------------------------
