@@ -134,18 +134,19 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        $message = 'Review deleted successfully';
-        $status = "success";
         try {
             Review::find($id)->delete();
+            $status = 'success';
+            $message = 'Review deleted successfully';
+            $http_code = 200;
         } catch (\Throwable $th) {
-            $status = "error";
+            $status = 'error';
             $message = $th->getMessage();
+            $http_code = 400;
         }
-
         return response()->json([
             'status' => $status,
             'message' => $message,
-        ], 200);
+        ], $http_code);
     }
 }
