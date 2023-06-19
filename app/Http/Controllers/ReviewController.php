@@ -90,7 +90,7 @@ class ReviewController extends Controller
             $data = null;
             $http_code = 400;
         }else{
-            $status = 'error';
+            $status = 'success';
             $message = 'Load data review successfully';
             $review = $review->where('id',$id);
             $data = $review->with('user:id,name,email')->get();
