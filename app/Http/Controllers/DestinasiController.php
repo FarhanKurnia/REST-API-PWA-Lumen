@@ -10,11 +10,6 @@ use App\Models\Destinasi;
 
 class DestinasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct()
     {
         // ini untuk token auth header
@@ -29,22 +24,6 @@ class DestinasiController extends Controller
         ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
         $this->validate($request, [
             'nama_destinasi' => 'required',
@@ -75,14 +54,7 @@ class DestinasiController extends Controller
         ], $http_code);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Destinasi  $destinasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    public function show($id){
         $destinasi = Destinasi::find($id);
         if (!$destinasi) {
             $status = 'error';
@@ -101,13 +73,6 @@ class DestinasiController extends Controller
             'data' => $data], $http_code);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Destinasi  $destinasi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -139,12 +104,6 @@ class DestinasiController extends Controller
         ], $http_code);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Destinasi  $destinasi
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id){
         $message = 'Destination deleted successfully';
         $status = 'success';
