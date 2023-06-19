@@ -25,7 +25,7 @@ class DestinasiController extends Controller
     {
         return response()->json([
             'status' => 'success',
-            'message' => 'Load data post successfully',
+            'message' => 'Load data destinations successfully',
             'data' => Destinasi::all()
         ], 200);
     }
