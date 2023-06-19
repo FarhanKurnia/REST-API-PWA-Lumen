@@ -1,16 +1,19 @@
-# REST API with Lumen PHP Framework Documentation
+# Destination Review Apps (REST API))
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 [![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 
-This REST-API was built using Lumen Framework for suggestion tourist destination application. </br>
+<p>This project is the development of a destination review and recommendation application built as the final project of a mobile web programming course from the university. Created using the Lumen framework by implementing the SDLC waterfall method, REST API architecture, MySQL for the database, Auth Token for the authentication function. The things that have been done during the application development period, including: collecting requirements, designing UML and tables, implementing the design (coding) and the result is an endpoint that is consumed by the front-end.</p>
+
 Feature:
-- Register User
-- Login User
+- Auth (Register, Login, Logout)
+- User (Profile, Update)
 - CRUD Destinasi
 - CRUD Review
+
+![Design Table](/images/destination_review.png "Design Table")
 
 Relation:
 - Users and Reviews (One to Many) 
