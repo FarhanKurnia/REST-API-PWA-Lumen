@@ -83,31 +83,22 @@ class DestinasiController extends Controller
      */
     public function show($id)
     {
-        //
-        $message = "Load data post successfully";
-        $status = "success";
         $destinasi = Destinasi::find($id);
-
         if (!$destinasi) {
-            $status = "error";
-            $message = "Data post not found";
+            $status = 'error';
+            $message = 'Destination not found';
+            $data = null;
+            $http_code = 400;
+        } else{
+            $message = 'Load data post successfully';
+            $status = 'success';
+            $data = $destinasi::with('review.user')->where('id',$id)->get();
+            $http_code = 200;
         }
-
         return response()->json([
             'status' => $status,
             'message' => $message,
-            'data' => $destinasi::with('review.user')->where('id',$id)->get()], 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Destinasi  $destinasi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Destinasi $destinasi)
-    {
-        //
+            'data' => $data], $http_code);
     }
 
     /**
@@ -154,8 +145,7 @@ class DestinasiController extends Controller
      * @param  \App\Models\Destinasi  $destinasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $message = 'Destination deleted successfully';
         $status = 'success';
         $http_code = 200;
