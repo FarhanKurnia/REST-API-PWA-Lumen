@@ -1,4 +1,4 @@
-# Destination Review Apps (REST API))
+# Destination Review Apps
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
@@ -13,13 +13,13 @@ Feature:
 - CRUD Destinasi
 - CRUD Review
 
-![Design Table](/images/destination_review.png "Design Table")
+![Design Table](/Images/destination_review.png "Design Table")
 
 Relation:
 - Users and Reviews (One to Many) 
 - Destinasi and Reviews (One to Many) 
 
-HTTP Header:
+HTTP Header (Auth):
 - token
 ------------------------------------------------------------------------
 ## Documentation API
@@ -56,7 +56,4 @@ API documentation can be accessed via https://documenter.getpostman.com/view/200
     ```
     php -S localhost:8000 -t public
     ```
-
-
-
 ------------------------------------------------------------------------
