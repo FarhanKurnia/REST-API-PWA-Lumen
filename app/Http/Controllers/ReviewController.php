@@ -125,27 +125,6 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-
-        $message = 'Review updated successfully';
-        $status = "success";
-        try {
-            Review::find($id)->update([
-                'user_id' => $request->user_id,
-                'review' => $request->review,
-                'rating' => $request->rating,
-            ]);
-        } catch (\Throwable $th) {
-            $status = "error";
-            $message = $th->getMessage();
-        }
-
-        return response()->json([
-            'status' => $status,
-            'message' => $message,
-        ], 200);
-    }
 
     /**
      * Remove the specified resource from storage.
