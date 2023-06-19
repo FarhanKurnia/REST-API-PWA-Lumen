@@ -20,7 +20,7 @@ HTTP Header:
 - token
 ------------------------------------------------------------------------
 ## Documentation API
-API documentation can be accessed via https://docuenter.getpostman.com/view/20083017/2s93sjVUjb
+API documentation can be accessed via https://documenter.getpostman.com/view/20083017/2s93sjVUjb
 
 
 ------------------------------------------------------------------------
