@@ -25,7 +25,7 @@ $router->get('/', function () use ($router) {
 $router->post('/api/register','UserController@register');
 $router->post('/api/login','UserController@login');
 $router->get('/api/User','ExampleController@index');
-$router->get('/api/User/{id}','UserController@show');
+$router->get('/api/profile','UserController@profile');
 $router->put('/api/User/{id}','UserController@update');
 $router->get('/api/logout','UserController@logout');
 

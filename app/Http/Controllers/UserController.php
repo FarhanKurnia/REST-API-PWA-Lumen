@@ -75,22 +75,24 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function show($id)
+    public function profile()
     {
-        //
-        $message = "Load data post successfully";
-        $status = "success";
-        $user = User::find($id);
-
+        $header = getallheaders();
+        $token = $header['token'];
+        $user = User::where('token',$token)->first();
         if (!$user) {
-            $status = "error";
-            $message = "Data post not found";
+            $status = 'error';
+            $message = 'User not found';
+            $data = null;
+        }else{
+            $status = 'success';
+            $message = 'User has found';
+            $data = User::with('review.destinasi')->where('token',$token)->first();
         }
-
         return response()->json([
             'status' => $status,
             'message' => $message,
-            'data' => $user::with('review.destinasi')->where('id',$id)->get()], 200);
+            'data' => $data], 200);
     }
 
     public function update(Request $request, $id)
