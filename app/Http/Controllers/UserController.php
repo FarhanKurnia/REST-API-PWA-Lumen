@@ -60,7 +60,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Load data post successfully',
-            'data' => Post::all()
+            'data' => User::all()
         ], 200);
     }
 
@@ -102,19 +102,21 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function logout(Request $request, $id)
+    public function logout()
     {
         $message = 'User updated successfully';
         $status = "success";
-        try {
-            User::find($id)->update([
-                'token' => $request->token,
-            ]);
+        $header = getallheaders();
+        $token = $header['token'];
+        try{
+            User::where('token',$token)->update([
+                'token' => null
+             ]);
         } catch (\Throwable $th) {
             $status = "error";
             $message = $th->getMessage();
         }
-
+        
         return response()->json([
             'status' => $status,
             'message' => $message,
