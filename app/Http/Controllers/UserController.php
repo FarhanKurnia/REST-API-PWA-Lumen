@@ -17,14 +17,17 @@ class UserController extends Controller
       $name = $request->input('name');
       $email = $request->input('email');
       $password = Hash::make($request->input('password'));
-
-      $user = User::create([
-          'name' => $name,
-          'email' => $email,
-          'password' => $password
-      ]);
-
-      return response()->json(['message' => 'Data added successfully'], 201);
+      $check_email = User::where('email',$email)->first();
+      if($check_email == NULL){
+        User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password
+        ]);
+      } else{
+        return response()->json(['message' => 'User has been added'], 400);
+      }
+      return response()->json(['message' => 'User added successfully'], 201);
   }
 
 
